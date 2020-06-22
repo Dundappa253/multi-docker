@@ -20,3 +20,21 @@ after_success:
     - docker push appa253/multi-nginx
     - docker push appa253/multi-server
     - docker push appa253/multi-worker
+
+deploy:
+    provider: elasticbeanstalk
+    region: "us-west-2"
+    app: "multi-docker"
+    env: "MultiDocker-env"
+    bucket: "elasticbeanstalk-us-west-2-539062601900"
+    bucket_path: "multi-docker"
+    on:
+        branch: master
+    edge: true
+    skip_cleanup: true
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
+    env:
+        global:
+        - secure: C6X6TKHu+VRZv86RIzVnrxlyTa2p1U+grG8vrIbqeka3uQDs7nLah4L7pPbUfdg91qpVcJXgVzzANSVvABGneNdP7vWwryuzMDuYIvc8BrSFx02LCxHA+U4fOyDaalt9ljfAfU+hHttDdyKUA4vwLQWW8srkf3plTbIOtUoPeVq9nzyOxBjmIxnzEOm4QJGS03xWwAUggQhoNe47EoTpPjg8eG9+11NRJHFsXyN+AnHTMqQkXa0Q2y6wgOm4MaEWD6gwOFq2c+NTg/7y99QiULDMsEsTcs7f723ZbkDVGQMljvpCepdkxwSsO9v/8gROgiujAjmKyITw+yMuZ3sDNGFazWgDXr9t7wEoem57nRbKCFO1Z6DeldiG5UYbJxYb3xjriRmungsXC3K2GDntLsJPsT2RSkiG6qi9HeSRp/aUgQzAgEiPmBWkuyyKdNlUXJIo21bLWoQQ6x0xvTZJWzAK1IpicLTpFvPBsLTxksIkq/vqW7sCTtq9ZkkdoaJBbT8tYHJJYRq6gzhD0aIdagtYqtafg745tHDOoLZ9iq1xL6yxrwM826xQLPpu9l3UzUCuLhCUfL619HMBl5M366Wn0XllVcO0QyYuKzaND1CUR0SCbA1Dvf5Kq94/uwd6BaFOcNn8MexuGGkf2ZyfGxcZWRQR40HJqFHyszVTnTw=
+        - secure: DwDdcu2Y0K3vcRTKv4P5VyL0gBYQoJLbPeAYIW2WY/i38F7+Hv6c8lbmxHNBqlvFDbWhCd2BEu09a/T5ZHBxkG46zqlRclGgwxZb6cB2hpwXiHR+sBJX1W9m1ToKB+lIZL+3L8wxu4LyzhbVIgk6g422MNd0YiHOzc/lL6m3o4b2XxRaKa2vxuxKW0NVTQYcZMWjIyOMADxPb93MOvLiPQTypir/yEEyJK2VTRSEB+8hv1D5YHwO2qatWif8Q5olokWj3HP9L3z3Cm8UXLnwJsKbkwyAFQ4KNu0V+GEQWuyfCVxP3fuXPRwNVPcMvBhZGlsN3B/K0m0pCDsMTIfIH3oY/mYJ4gEZD2Jpom6PVJwMI0ffvafesjMyPKc3Z2NaNvGyAh5QjGeBhq+glqcYRJL/zFfote1Hb7AEcPej3cREknhXzBAEPkSz+lM9K18m7xuKDzeJ6W9v1+tyfTS2X+iBsc3c75RVsxkjoby6+dTAKMWHkkbDH3KbCCfOb6ky6dBngrHs885ycC1/1aSdET5SRMK0AUL9RTJJCmYI5cTxevuAfSDX4HvMrhJwBekrc3oUiSusTmkJCkZV6hULrZ92Q0p9fmXJDi2I9O6isFtdy9cfLHd7lQD/mXzfGGmcuGZFX5R8ReX3CBhJq87UQv8Z/JIfM5p536uF0lz1b+c=
