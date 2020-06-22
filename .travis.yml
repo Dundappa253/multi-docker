@@ -6,8 +6,6 @@ services:
 before_install:
     - docker build -t appa253/react-test -f ./client/Dockerfile.dev ./client
 
-script:
-    - docker run -e CI=true appa253/react-test npm test
 
 after_success:
     - docker build -t appa253/multi-client ./client
