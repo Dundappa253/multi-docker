@@ -1,0 +1,22 @@
+sudo : required
+services:
+    - docker
+
+before_install:
+    - docker build -t appa253/react-test -f ./client/Dockerfile.dev ./client
+
+script:
+    - docker run appa253/react-test npm test -- --coverage
+
+after_success:
+    - docker build -t appa253/multi-client ./client
+    - docker build -t appa253/multi-nginx ./nginx
+    - docker build -t appa253/multi-server ./server
+    - docker build -t appa253/multi-worker ./worker
+# LOGIN to docker CLI
+    - echo "$DOCKER_PASSWORD" | docker -u "$DOCKER_ID" -p "$DOCKER_PASSWORD" --password-stdin
+# Push image to docker hub
+    - docker push appa253/multi-client
+    - docker push appa253/multi-nginx
+    - docker push appa253/multi-server
+    - docker push appa253/multi-worker
