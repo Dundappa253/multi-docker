@@ -3,7 +3,7 @@
     "containerDefinitions":[
         {
             "name": "client",
-            "image": "stephengrider/multi-client",
+            "image": "appa253/multi-client",
             "hostname": "client",
             "essential" : false,
             "memory" : 100
