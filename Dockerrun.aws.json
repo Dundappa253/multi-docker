@@ -10,21 +10,21 @@
         },
         {
             "name": "server",
-            "image": "stephengrider/multi-server",
+            "image": "appa253/multi-server",
             "hostname": "api",
             "essential" : false,
             "memory" : 100
         },
         {
             "name": "worker",
-            "image": "stephengrider/multi-worker",
+            "image": "appa253/multi-worker",
             "hostname": "worker",
             "essential" : false,
             "memory" : 100
         },
         {
             "name": "nginx",
-            "image": "stephengrider/multi-nginx",
+            "image": "appa253/multi-nginx",
             "hostname": "nginx",
             "essential" : true,
             "portMappings" : [
