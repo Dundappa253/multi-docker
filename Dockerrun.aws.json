@@ -3,7 +3,7 @@
     "containerDefinitions":[
         {
             "name": "client",
-            "image": "stephengrider/multi-client",
+            "image": "stephengrider/multi-client            ",
             "hostname": "client",
             "essential" : false,
             "memory" : 100
@@ -24,7 +24,7 @@
         },
         {
             "name": "nginx",
-            "image": "stephengrider/multi-nginx",
+            "image": "appa253/multi-nginx",
             "hostname": "nginx",
             "essential" : true,
             "portMappings" : [
